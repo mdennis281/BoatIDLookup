@@ -8,6 +8,7 @@
  This file is used to store all API keys.
  By default, it is expected to be located in the base directory, but this can be changed by defining the filepath when instantiating the class: `BoatLookup("<Filepath>")`
  
+#### The expected format looks like this
  ```json
  {
 	"tx": {
