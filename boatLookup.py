@@ -29,7 +29,7 @@ from customErrors import APIError, AuthError
         FileNotFoundError
             The auth filepath defined does not exist
         ValueError
-            The boat id is incorrectly formatted, or not unsupported
+            The boat id is incorrectly formatted, or not supported
 
 """
 class RegisteredBoats:
