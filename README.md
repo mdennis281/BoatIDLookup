@@ -5,7 +5,8 @@
  
  ## API Auth Setup
  ### keys.json file
- This file is used to store all API keys 
+ This file is used to store all API keys.
+ By default, it is expected to be located in the base directory, but this can be changed by defining the filepath when instantiating the class: `BoatLookup("<Filepath>")`
  
  ```json
  {
