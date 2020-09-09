@@ -1,5 +1,5 @@
 
-
+#Used when an API returns an error
 class APIError(Exception):
     def __init__(self,HTTPCode,error,**kwargs):
         self.error = error
@@ -10,6 +10,7 @@ class APIError(Exception):
         if self.API: msg = f'{self.API} API {msg}' #prepend API host if defined
         return msg
 
+#used when there's an issue loading the json auth file
 class AuthError(Exception):
     def __init__(self,message):
         self.msg = message

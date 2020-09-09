@@ -5,22 +5,35 @@ from customErrors import APIError, AuthError
 
 """
     Desc:
+        Finds ownership information on a boat by searching the state boat id
 
     Functions:
+        lookup()
+            Args:
+                id | STRING
+            Desc:
+                finds boat ownership details of boat id passed as arg
+            Returns:
+                list of dictionaries
+                Structure: https://pastebin.com/PtCeLPTJ
 
-    Optional args:
+    Optional kwargs:
+        authFile | STRING
+            filepath to the authfile (default = 'keys.json')
 
     Errors:
-
+        APIError
+            There is some kind of issue with the API call made (error details in msg)
+        AuthError
+            The authFile does not have the expected structure
         FileNotFoundError
             The auth filepath defined does not exist
-
-
-
+        ValueError
+            The boat id is incorrectly formatted, or not unsupported
 
 """
 class RegisteredBoats:
-    def __init__(self,authFile="keys.json"):
+    def __init__(self,authFile="./keys.json"):
         self.auth = self._loadKeys(authFile)
 
     def lookup(self,id):
@@ -78,8 +91,3 @@ class RegisteredBoats:
                 return json.loads(f.read())
             except JSONDecodeError:
                 raise AuthError("The auth file does not contian valid JSON")
-
-
-
-RB = RegisteredBoats()
-print(RB.lookup(sys.argv[1]))
