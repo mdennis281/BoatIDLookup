@@ -14,12 +14,15 @@ from customErrors import APIError, AuthError
             Desc:
                 finds boat ownership details of boat id passed as arg
             Returns:
-                list of dictionaries
-                Structure: https://pastebin.com/PtCeLPTJ
+                if result(s) found:
+                    list of dictionaries
+                    Structure: https://pastebin.com/PtCeLPTJ
+                no results:
+                    []
 
     Optional kwargs:
         authFile | STRING
-            filepath to the authfile (default = 'keys.json')
+            filepath to the authfile (default = './keys.json')
 
     Errors:
         APIError
@@ -50,6 +53,7 @@ class RegisteredBoats:
         raise ValueError('Unsupported boat identifier: '+id)
 
     def _lookupTX(self,id):
+        #strip 'TX' off the front, remove any whitespace
         id = id[2:].replace(' ','')
         url = 'https://data.texas.gov/resource/v2f5-4wth.json'
 
